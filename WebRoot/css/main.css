@@ -1,0 +1,58 @@
+/* head头 */
+#head {
+	text-align: right;
+	background-color: #C7DDEF;
+}
+#head_img {
+	float: left;
+	width: 51px;
+	height: 32px;
+}
+#admin_head {
+	text-align: center;
+	background-color: #C7DDEF;
+}
+
+/* 书籍种类栏 */
+#book_menu {
+	text-align: center;
+	background-color: #C7DDEF;
+}
+
+/* 书籍搜索栏 */
+#book_search {
+	text-align: right;
+	background-color: #C7DDEF;
+}
+
+/* 注册框 */
+#register_div {
+	position: relative;
+	left: 200px;
+}
+
+/* 登录界面div布局 */
+#login_div {
+	float: left;
+	margin-left: 200px;
+	width: 60%;
+}
+#login_div_left {
+	float: left;
+	width: 300px;
+	text-align: center;
+	background: gainsboro;
+}
+#login_div_right {
+	float: left;
+	margin-left: 20px;
+	text-align: center;
+	background: gainsboro;
+}
+
+/* 购物车布局 */
+#cart_table {
+	text-align: center;
+	float: left;
+	margin-left: 400px;
+}
