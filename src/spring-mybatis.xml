@@ -13,8 +13,12 @@
 	 http://www.springframework.org/schema/context/spring-context.xsd	
      http://www.springframework.org/schema/aop 
      http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">  
-    <!-- 自动扫描 -->  
-  <!-- <context:component-scan base-package="cn.itbz" />  --> 
+   <!-- 启用注解 -->  
+   <context:annotation-config /> 
+   <!-- 自动扫描 -->  
+  <context:component-scan base-package="cn.itbz.ebook.*">  
+  	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+  </context:component-scan> 
  <!-- 引入配置文件 -->  
     <bean id="propertyConfigurer"  
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
@@ -58,9 +62,10 @@
 	</bean>
      
     <!-- 配置事务管理器 -->
-	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<!-- 开启事务注解，标注@Transactional的类和方法将具有事务性 -->
-	<tx:annotation-driven transaction-manager="txManager"/> 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+    
 </beans> 

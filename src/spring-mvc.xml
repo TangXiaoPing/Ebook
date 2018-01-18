@@ -9,9 +9,10 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd    
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-    <mvc:annotation-driven/>                
-    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->  
-    <context:component-scan base-package="cn.itbz" />  
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>                
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器,忽略@Service防止事物不起作用 -->  
+    <context:component-scan base-package="cn.itbz.ebook.controller"/> 
     <context:annotation-config></context:annotation-config>
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
     <bean id="mappingJacksonHttpMessageConverter"  
