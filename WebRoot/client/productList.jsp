@@ -6,7 +6,7 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -20,13 +20,12 @@
 	<%@ include file="../util/head.jsp" %>
 	<%@ include file="../util/menu_search.jsp" %>
 
-	<c:forEach var="product" items="${productSet}">
-		商品名:${product.name} <br/>
+	<c:forEach var="product" items="${pageUtil.pageData}">
+		商品名:${product.bookName} <br/>
 		价&nbsp;格:${product.price} <br/>
-		种&nbsp;类${product.category} <br/>
-		库&nbsp;存:${product.num} <br/>
-		图&nbsp;片:${product.imgurl} <br/>
-		描&nbsp;述${product.description} <br/>
+		种&nbsp;类:${product.bookTypeName} <br/>
+		库&nbsp;存:${product.stock} <br/>
+		图&nbsp;片:<img src="${pageContext.request.contextPath}/${product.images}"/><br/>
 		<hr/>
 	</c:forEach>
 </body>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.itbz.ebook.bean.User;
 import cn.itbz.ebook.bean.UserInfo;
@@ -24,6 +25,7 @@ import cn.itbz.ebook.util.MsgVo;
 public class UserController {
 	//返回json数据到前端
 	private MsgVo msgVo;
+	private String strValue;
 	private Integer status=0;
 	private String message;
 	@Autowired
@@ -35,14 +37,14 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("login.action")
-	@ResponseBody
-	public MsgVo login(String username,String password,HttpServletRequest request){
+	public ModelAndView login(String username,String password,HttpServletRequest request){
 		User user=userService.login(username,password);
+		strValue="client/login.jsp";
 		if(user!=null){
 			//登陆成功返回状态
 			status=1;
 			message="登陆成功";
-			
+			strValue="getAllBook.action";
 			//保存userInfo到session中
 			Integer uid=user.getId();
 			UserInfo userInfo=userService.getUserInfoByUid(uid);
@@ -53,7 +55,10 @@ public class UserController {
 			status=0;
 			message="账号或密码错误";
 		}
-		return initMsgVo(status, message);
+		msgVo=initMsgVo(status, message);
+		ModelAndView mav=new ModelAndView(strValue);
+		mav.addObject("msgVo", msgVo);
+		return mav;
 	}
 	/**
 	 * 用户注册方法：注册之后往用户表和用户详情表添加数据

@@ -21,10 +21,11 @@
 
 	<div id="login_div">
 		<div id="login_div_left">
-			<form action="${pageContext.request.contextPath}/LoginServlet" method="post">
+			<form action="${pageContext.request.contextPath}/login.action" method="post">
 				<p><h4>个人用户登录</h4></p>
 				用户名:<input type="text" name="username"/> <br/>
 				密&nbsp;码:<input type="password" name="password"/> <br/>
+				<span style="color: red;">${msgVo.message}</span> <br/>
 				&nbsp;<input type="checkbox" name="checkbox" value="checkbox"/>记住用户名&nbsp;&nbsp;
 				<input type="checkbox" name="checkbox" value="checkbox"/>自动登录&nbsp; <br/>
 				<input type="submit" value="登录"/>
@@ -35,7 +36,7 @@
 			<p>注册新会员，享受优惠价格和完美购书体验。。。</p>
 			<p>万种图书，供你选择！赶快注册吧！！！</p>
 			<a href="${pageContext.request.contextPath}/client/register.jsp">
-				<img alt="点击注册" src="../img/register.png"/>
+				<img alt="点击注册" src="${pageContext.request.contextPath}/img/register.png"/>
 			</a>
 		</div>
 	</div>

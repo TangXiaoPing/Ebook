@@ -67,6 +67,6 @@ public interface UserMapper {
 	 * @param user
 	 * @return
 	 */
-	@Update("update t_user set password=#{password} and phone=#{phone} where id=#{id}")
+	@Update("update t_user set password=#{password},phone=#{phone} where id=#{id}")
 	boolean updateUserById(User user);
 }
